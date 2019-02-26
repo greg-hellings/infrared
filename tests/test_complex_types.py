@@ -210,7 +210,6 @@ def test_dir_type_resolve(dir_root_dir, dir_type, monkeypatch):
         dir_type.resolve('dir4')
 
 
-@pytest.fixture
 def list_of_file_names(settings_dirs, spec_option):
     """Create a new IniType complex type
     """

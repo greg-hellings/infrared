@@ -459,7 +459,7 @@ class WorkspaceManager(object):
                 tmp_dir = tempfile.mkdtemp()
                 workspace_src = \
                     os.path.join(tmp_dir, workspace_src.split('/')[-1])
-                with open(workspace_src, 'w') as f:
+                with open(workspace_src, 'wb') as f:
                     f.write(urllib_ret.data)
 
             if workspace_name is None:
@@ -479,7 +479,7 @@ class WorkspaceManager(object):
                 'Workspace URL not found - ({}) '.format(workspace_src))
         except tarfile.ReadError as e:
             raise exceptions.IRFailedToImportWorkspace(
-                "{} tar{}".format(workspace_src, e.message))
+                "{} tar{}".format(workspace_src, str(e)))
         except ValueError as e:
             err_msg = "Workspace file not found"
             if 'unknown url' in e.message:
